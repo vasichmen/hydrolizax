@@ -14,6 +14,7 @@ bot.
 """
 
 import logging
+import random
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
@@ -28,18 +29,25 @@ logger = logging.getLogger(__name__)
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Привет! Я - Лиза. Это как Алиса, только тихая.')
 
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text('Да ты же тупой, это бесполезно!')
 
 
 def echo(bot, update):
     """Echo the user message."""
     # update.message.reply_text(update.message.text)
-    update.message.reply_text("жжжжжжжжжжжжжжж")
+    count = random.random() * 25
+    stri = "ж"
+    for number in range(count):
+        if random.random() < 0.5:
+            stri += "ж"
+        else:
+            stri += "Ж"
+    update.message.reply_text(stri)
 
 
 def error(bot, update, error):
@@ -50,7 +58,7 @@ def error(bot, update, error):
 def main():
     """Start the bot."""
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater("728805432:AAFi8TtH3tTDF7dDe2x0waGG8DsdRjn46uI")
+    updater = Updater("728805432:AAEginEOKVBEBGExhOPYlvzcY1cFZF9645k")
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
