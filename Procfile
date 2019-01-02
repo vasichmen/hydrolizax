@@ -1,1 +1,1 @@
-web: bot.__main__
+web: main()
