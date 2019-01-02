@@ -19,9 +19,7 @@ import random
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -29,7 +27,8 @@ logger = logging.getLogger(__name__)
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Привет! Я - Лиза. Это как Алиса, только тихая.')
+    update.message.reply_text(
+        'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или применить силу. Я всё сказала, приступаем.')
 
 
 def help(bot, update):
