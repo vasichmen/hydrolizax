@@ -40,7 +40,7 @@ def help(bot, update):
 def echo(bot, update):
     """Echo the user message."""
     # update.message.reply_text(update.message.text)
-    count = random.random() * 25
+    count = round(random.random() * 35)
     stri = "ж"
     for number in range(count):
         if random.random() < 0.5:
