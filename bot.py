@@ -36,7 +36,7 @@ users = {}
 def start(bot, update):
     """Send a message when the command /start is issued."""
     uid = update.message.from_user.id
-    if (users[uid] == None)
+    if (users[uid] == None):
         users[uid] = UserInfo(uid)
         users[uid].meetDate = datetime.strftime("%d-%m-%Y %H:%M")
         update.message.reply_text(
