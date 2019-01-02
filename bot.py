@@ -74,8 +74,9 @@ def send_stickerpack(bot, update):
     uid = update.message.from_user.id
     uname = update.message.from_user.first_name
     update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
-    ans = Sticker("AAQCABPFX-MNAATJAeOoY2ZYLm94AAIC", 256, 256)
-    update.message.sticker = ans
+    ans = Sticker("AAQCABPFX-MNAATJAeOoY2ZYLm94AAIC", 512, 512)
+    bot.send_sticker(uid, ans)
+
     logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: send_stickerpack')
 
 def error(bot, update, error):
