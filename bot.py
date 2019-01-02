@@ -20,7 +20,7 @@ import random
 from telegram import Sticker
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-from Constants import StickerPackIGPlus
+from Constants import StickerPackIGPlus, StickerPackIGPlusComments
 from UserInfo import UserInfo
 
 # Enable logging
@@ -66,8 +66,7 @@ def echo(bot, update):
 
     if mtext.find('стикер') != -1:
         update.message.reply_text('стикер? я услышала слово стикер?!?!?!?!? ну, ты сам напросился!!!')
-        ans = Sticker(StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))], 512, 512)
-        bot.send_sticker(uid, ans)
+        send_random_stick_with_label(bot, update)
         logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: echo.stickers')
     else:
         # update.message.reply_text(update.message.text)
@@ -88,8 +87,7 @@ def answer_stickerpack(bot, update):
     sticker_id = update.message.sticker.file_id
     if random.random() < 0.5:
         update.message.reply_text('СТИКЕРЫЫЫЫ. как я люблю стикерыыыыыыыы аааааааааааааааааа, держи мои любимые')
-        ans = Sticker(StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))], 512, 512)
-        bot.send_sticker(uid, ans)
+        send_random_stick_with_label(bot, update)
     else:
         if sticker_id in StickerPackIGPlus:
             update.message.reply_text('ооо, мои любимые стикеры!! ты знал, да???')
@@ -97,6 +95,15 @@ def answer_stickerpack(bot, update):
             update.message.reply_text('фу, что это за фигня такая?? опять меня бесишь??? вот ты специально,да???')
 
     logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: answer_stickerpack')
+
+
+def send_random_stick_with_label(bot, update):
+    uid = update.message.from_user.id
+    stic_code = StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))]
+    ans = Sticker(stic_code, 512, 512)
+    bot.send_sticker(uid, ans)
+    if StickerPackIGPlusComments[stic_code] != '':
+        update.message.reply_text(StickerPackIGPlusComments[stic_code])
 
 
 def error(bot, update, error):
