@@ -43,13 +43,16 @@ def start(bot, update):
         users[uid] = UserInfo(uid)
         users[uid].meetDate = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
         update.message.reply_text(
-            'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, нвчинай.')
+            'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, начинай.')
     logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: start')
 
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
+    uid = update.message.from_user.id
+    uname = update.message.from_user.first_name
     update.message.reply_text('Да ты же тупой, это бесполезно! Разбирайся сам, не беси меня')
+    logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: help')
 
 
 def echo(bot, update):
@@ -64,6 +67,11 @@ def echo(bot, update):
             stri += "Ж"
     update.message.reply_text(stri)
 
+
+def send_stickerpack(bot, update):
+    """отправить стикерпак пользователю"""
+    update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
+    # update.message.reply_sticker=
 
 def error(bot, update, error):
     """Log Errors caused by Updates."""
@@ -84,7 +92,8 @@ def main():
     # dp.add_handler(CommandHandler("sum", sum))
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, echo))  # ответ на текстовое сообщение
+    dp.add_handler(MessageHandler(Filters.sticker, send_stickerpack))  # отправка стикеров
 
     # log all errors
     dp.add_error_handler(error)
