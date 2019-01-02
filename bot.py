@@ -75,7 +75,7 @@ def send_stickerpack(bot, update):
     uid = update.message.from_user.id
     uname = update.message.from_user.first_name
     logger.warning(str(update.message.sticker.file_id))
-    # update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
+    update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
     ans = Sticker(StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))], 512, 512)
     bot.send_sticker(uid, ans)
 
