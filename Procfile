@@ -1,1 +1,1 @@
-init: bot.py
+web: bot:app
