@@ -1,13 +1,4 @@
-import random
+d = {}
+d[1] = 2
 
-count = round(random.random() * 25)
-stri = 'ж'
-r = range(count)
-print(r)
-for number in range(count):
-    if random.random() < 0.5:
-        stri += 'ж'
-    else:
-        stri += 'Ж'
-
-print(stri)
+print(d.get(3) == None)
