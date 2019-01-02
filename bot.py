@@ -20,6 +20,7 @@ import random
 from telegram import Sticker
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+from Constants import StickerPackIGPlus
 from UserInfo import UserInfo
 
 # Enable logging
@@ -75,7 +76,7 @@ def send_stickerpack(bot, update):
     uname = update.message.from_user.first_name
     logger.warning(str(update.message.sticker.file_id))
     update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
-    ans = Sticker("CAADAgADFAMAAn7yxQzc6RDrq7jKVwI", 512, 512)
+    ans = Sticker(round(random.random() * len(StickerPackIGPlus)), 512, 512)
     bot.send_sticker(uid, ans)
 
     logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: send_stickerpack')

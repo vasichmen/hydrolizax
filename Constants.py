@@ -1,3 +1,12 @@
-from enum import Enum
-
-Statuses = Enum('')
+StickerPackIGPlus = ['CAADAgADAwADLS6WDqoityDowUMrAg',
+                     'CAADAgADBAADLS6WDrXagHTFRERLAg',
+                     'CAADAgADBQADLS6WDneo_ua5k91SAg',
+                     'CAADAgADBgADLS6WDlz7SX2WcFZPAg',
+                     'CAADAgADBwADLS6WDo1d3AQuzCiKAg',
+                     'CAADAgADCAADLS6WDs1hqy0XMmErAg',
+                     'CAADAgADCQADLS6WDsTytcbeP52MAg',
+                     'CAADAgADCgADLS6WDqAif6Bk1y2vAg',
+                     'CAADAgADCwADLS6WDlFKm4VgKPp2Ag',
+                     'CAADAgADDgADLS6WDp9ZO0rMGs-FAg',
+                     'CAADAgADDwADLS6WDkJi7oP-oaMzAg',
+                     'CAADAgADEAADLS6WDmmATLm0uRW_Ag']
