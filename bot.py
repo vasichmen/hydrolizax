@@ -41,7 +41,7 @@ def start(bot, update):
         update.message.reply_text('Второй раз не здороваюсь, вспоминай, что я говорила!!!11!11!!')
     else:
         users[uid] = UserInfo(uid)
-        users[uid].meetDate = datetime.strftime("%d-%m-%Y %H:%M")
+        users[uid].meetDate = datetime.datetime.strftime("%d-%m-%Y %H:%M")
         update.message.reply_text(
             'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, нвчинай.')
     logger.warning('Пользователь ' + uname + '(' + uid + ') команда: start')
