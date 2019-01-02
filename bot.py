@@ -59,26 +59,36 @@ def help(bot, update):
 
 def echo(bot, update):
     """Echo the user message."""
-    # update.message.reply_text(update.message.text)
-    count = round(random.random() * 35)
-    stri = "ж"
-    for number in range(count):
-        if random.random() < 0.5:
-            stri += "ж"
-        else:
-            stri += "Ж"
-    update.message.reply_text(stri)
+    mtext = update.message.text
+    uid = update.message.from_user.id
+    uname = update.message.from_user.first_name
+
+    if mtext.find('стикер') != -1:
+        update.message.reply_text('стикер? я услышала слово стикер?!?!?!?!? ну, ты сам напросился!!!')
+        ans = Sticker(StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))], 512, 512)
+        bot.send_sticker(uid, ans)
+        logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: answer_stickerpack')
+    else:
+        # update.message.reply_text(update.message.text)
+        count = round(random.random() * 35)
+        stri = "ж"
+        for number in range(count):
+            if random.random() < 0.5:
+                stri += "ж"
+            else:
+                stri += "Ж"
+        update.message.reply_text(stri)
 
 
-def send_stickerpack(bot, update):
+def answer_stickerpack(bot, update):
     """отправить стикерпак пользователю"""
     uid = update.message.from_user.id
     uname = update.message.from_user.first_name
-    update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
+    update.message.reply_text('СТИКЕРЫЫЫЫ. как я люблю стикерыыыыыыыы аааааааааааааааааа, держи мои любимые')
     ans = Sticker(StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))], 512, 512)
     bot.send_sticker(uid, ans)
+    logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: answer_stickerpack')
 
-    logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: send_stickerpack')
 
 def error(bot, update, error):
     """Log Errors caused by Updates."""
@@ -100,7 +110,7 @@ def main():
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))  # ответ на текстовое сообщение
-    dp.add_handler(MessageHandler(Filters.sticker, send_stickerpack))  # отправка стикеров
+    dp.add_handler(MessageHandler(Filters.sticker, answer_stickerpack))  # отправка стикеров
 
     # log all errors
     dp.add_error_handler(error)
