@@ -64,7 +64,7 @@ def echo(bot, update):
     uid = update.message.from_user.id
     uname = update.message.from_user.first_name
 
-    if mtext.find('стикер') != -1:
+    if mtext.find('стикер'.lower()) != -1:
         update.message.reply_text('стикер? я услышала слово стикер?!?!?!?!? ну, ты сам напросился!!!')
         send_random_stick_with_label(bot, update)
         logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: echo.stickers')
