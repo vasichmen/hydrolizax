@@ -23,12 +23,16 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
+# глобальные переменные
+
+# словарь id пользователя - информация
+
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
     update.message.reply_text(
-        'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или применить силу. Я всё сказала, приступаем.')
+        'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, нвчинай.')
 
 
 def help(bot, update):
