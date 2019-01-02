@@ -17,6 +17,7 @@ import datetime
 import logging
 import random
 
+from telegram import Sticker
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from UserInfo import UserInfo
@@ -70,8 +71,12 @@ def echo(bot, update):
 
 def send_stickerpack(bot, update):
     """отправить стикерпак пользователю"""
+    uid = update.message.from_user.id
+    uname = update.message.from_user.first_name
     update.message.reply_text('СТИКЕРЫЫЫЫ. ща отправлю тебе тоже')
-    # update.message.reply_sticker=
+    ans = Sticker(234, 256, 256)
+    update.message.reply_sticker(ans)
+    logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: send_stickerpack')
 
 def error(bot, update, error):
     """Log Errors caused by Updates."""
