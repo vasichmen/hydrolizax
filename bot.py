@@ -36,6 +36,7 @@ users = {}
 def start(bot, update):
     """Send a message when the command /start is issued."""
     uid = update.message.from_user.id
+    uname = update.message.from_user.first_name
     if (uid in users):
         update.message.reply_text('Второй раз не здороваюсь, вспоминай, что я говорила!!!11!11!!')
     else:
@@ -43,6 +44,7 @@ def start(bot, update):
         users[uid].meetDate = datetime.strftime("%d-%m-%Y %H:%M")
         update.message.reply_text(
             'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, нвчинай.')
+    logger.warning('Пользователь ' + uname + '(' + uid + ') команда: start')
 
 
 def help(bot, update):
