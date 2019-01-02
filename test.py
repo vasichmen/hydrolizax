@@ -1,4 +1,4 @@
-d = {}
-d[1] = 2
+import random
 
-print(d.get(3) == None)
+for i in range(30):
+    print(round(random.random() * 12))

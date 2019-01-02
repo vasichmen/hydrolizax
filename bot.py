@@ -99,7 +99,7 @@ def answer_stickerpack(bot, update):
 
 def send_random_stick_with_label(bot, update):
     uid = update.message.from_user.id
-    stic_code = StickerPackIGPlus[round(random.random() * len(StickerPackIGPlus))]
+    stic_code = StickerPackIGPlus[int(random.random() * len(StickerPackIGPlus))]
     ans = Sticker(stic_code, 512, 512)
     bot.send_sticker(uid, ans)
     if StickerPackIGPlusComments[stic_code] != '':
