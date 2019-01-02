@@ -24,7 +24,8 @@ from Constants import StickerPackIGPlus
 from UserInfo import UserInfo
 
 # Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+# logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # глобальные переменные
@@ -45,7 +46,7 @@ def start(bot, update):
         users[uid] = UserInfo(uid)
         users[uid].meetDate = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
         update.message.reply_text(
-            'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будьте осторожны: всё, что вы скажете может быть использовано против вас. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, начинай.')
+            'Привет! Я - Гидролиза. Это как Алиса, только тихая. Со мной можно попробовать поболтать, но будь осторожен: всё, что ты скажешь будет использовано против тебя. Если вдруг мне что-то не понравится - я могу перестать разговаривать или начать жужжать. Это значит, ты делаешь что-то неправильно. Я всё сказала, начинай.')
     logger.warning('Пользователь ' + uname + '(' + str(uid) + ') команда: start')
 
 
